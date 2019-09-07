@@ -1,0 +1,63 @@
+<html>
+
+<head>
+  <!-- Load the latest version of TensorFlow.js -->
+  <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+  <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
+  <script src="https://unpkg.com/@tensorflow-models/knn-classifier"></script>
+  <style>
+    .content-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .content {
+      width: 300px;
+    }
+
+    .video {
+      display: flex;
+      justify-content: center;
+      border: 1px solid red;
+    }
+
+    .all_buttons {
+      border: 1px solid red;
+      display: flex;
+      justify-content: center;
+    }
+
+    .clicker {
+      margin: 8px;
+      padding: 32px 16px;
+      display: inline-block;
+    }
+
+    .red_border {
+      border: 1px solid red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content-container">
+    <div class="content">
+      <!-- Add an image that we will use to test -->
+      <!--- <img id="img" crossOrigin src="https://i.imgur.com/JlUvsxa.jpg" width=227 height=227/> --->
+      <div class="video"><video autoplay playsinline muted id="webcam" width="224" height="224"></video></div>
+      <div class="red_border" id="loading">Waiting to start...</div>
+      <div class="all_buttons">
+        <button class="clicker" id="class-a">Add A</button>
+        <button class="clicker" id="class-b">Add B</button>
+        <button class="clicker" id="class-c">Add C</button>
+      </div>
+      <div class="red_border" id="console"></div>
+      <div class="red_border" id="vision"></div>
+      <div class="red_border" id="details"></div>
+      <!-- Load index.js after the content of the page -->
+      <script src="index.js"></script>
+    </div>
+  </div>
+</body>
+
+</html>
