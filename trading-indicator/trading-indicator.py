@@ -49,7 +49,7 @@ instrument_list = ['SPY', 'DIA', '0P0000WN7D.L', 'EZU', 'FXI', 'EWJ', 'EWZ', 'RS
 # Define the start and end date in YYYY-MM-DD
 start = '2013-01-01'
 end = '2019-08-31' # This is good enough
-days = 26 * 4 * 2
+days = 26
 test_data_fract = 0.05
 
 
@@ -214,3 +214,16 @@ print('Linear regression', confidencereg, '\n',
 # Seems like the KNN regressor has the best accuracy at K=2, but not my much.
 # Note: at days=52 the KNN regressor best accuracy increases to 0.296 with K=3
 # Note: at days=104 the KNN regressor best accuracy decreases to 0.218 with K=4
+# Note: at days=208 the KNN regressor best accuracy decreases to 0.268 with K=2
+
+# Plot the KNN predicted vs Actual results
+# Re-build the KNN model with the best K
+clfknn = clfknn = KNeighborsRegressor(n_neighbors = Ks[confidenceknn.index(max(confidenceknn))])
+clfknn.fit(X_train, y_train)
+X_predicted = clfknn.predict(X_test)
+fig = plt.Figure(figsize=(8, 8))
+plt.scatter(pd.DataFrame(X_predicted)[1], 
+            pd.DataFrame(y_test)[1])
+plt.xlabel('Predicted returns')
+plt.ylabel('Actual returns')
+
